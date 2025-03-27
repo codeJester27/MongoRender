@@ -1,7 +1,7 @@
 const { MongoClient } = require("mongodb");
 
 // The uri string must be the connection string for the database (obtained on Atlas).
-const uri = "mongodb+srv://<user>:<password>@ckmdb.5oxvqja.mongodb.net/?retryWrites=true&w=majority";
+const uri = `mongodb+srv://jtalbot:${encodeURIComponent(process.env.MONGO_DB_PASSWORD)}@mycluster.dwhh37z.mongodb.net/?retryWrites=true&w=majority&appName=MyCluster`;
 
 // --- This is the standard stuff to get it to work on the browser
 const express = require('express');
@@ -33,7 +33,7 @@ console.log("Looking for: " + searchKey);
 
 async function run() {
   try {
-    const database = client.db('ckmdb');
+    const database = client.db('jtmdb');
     const parts = database.collection('cmps415');
 
     // Hardwired Query for a part that has partID '12345'
